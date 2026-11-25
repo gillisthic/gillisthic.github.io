@@ -1,0 +1,1168 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蜜臂MV_九一MV91影像社区|创意短视频与视觉内容平台</title>
+<meta name="description" content="蜜臂MV（九一MV91）是一个专注于创意短视频与视觉内容的影像社区，汇聚大量原创作品与创作者，提供内容展示、社群互动与创作交流。">
+<style>
+  :root {
+    --bg: #0b0c10;
+    --bg2: #12141c;
+    --bg3: #1a1d2b;
+    --card: #171a26;
+    --line: #262b3d;
+    --pri: #ff2e63;
+    --pri2: #ff6b9d;
+    --sec: #08d9d6;
+    --sec2: #3af0ed;
+    --txt: #eef1f8;
+    --txt2: #a8b0c8;
+    --txt3: #6d7590;
+    --grad: linear-gradient(135deg, #ff2e63 0%, #ff6b9d 60%, #ff9a5a 100%);
+    --grad2: linear-gradient(135deg, #08d9d6 0%, #3af0ed 100%);
+    --rad: 18px;
+    --shadow: 0 18px 48px rgba(0,0,0,.45);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--txt);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+  ul { list-style: none; }
+  ::selection { background: var(--pri); color: #fff; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg2); }
+  ::-webkit-scrollbar-thumb { background: #2d3448; border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: #3c445e; }
+
+  .wrap { width: min(1180px, 92%); margin: 0 auto; }
+  .sec { padding: 96px 0; position: relative; }
+  .sec-head { margin-bottom: 48px; }
+  .sec-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--pri2); font-weight: 700; margin-bottom: 14px;
+  }
+  .sec-tag::before {
+    content: ""; width: 26px; height: 2px; background: var(--grad);
+    border-radius: 2px;
+  }
+  .sec-title {
+    font-size: clamp(26px, 4vw, 42px); line-height: 1.25; font-weight: 800;
+    letter-spacing: -.5px;
+  }
+  .sec-title em {
+    font-style: normal;
+    background: var(--grad); -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .sec-desc { color: var(--txt2); max-width: 720px; margin-top: 14px; font-size: 15.5px; }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    transition: .35s;
+    background: rgba(11,12,16,.55);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: rgba(11,12,16,.9);
+    border-bottom-color: var(--line);
+    box-shadow: 0 6px 24px rgba(0,0,0,.4);
+  }
+  .nav-in {
+    height: 68px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; letter-spacing: .5px; }
+  .logo-mark {
+    width: 34px; height: 34px; border-radius: 10px; background: var(--grad);
+    display: grid; place-items: center; box-shadow: 0 4px 16px rgba(255,46,99,.45);
+    flex: 0 0 auto;
+  }
+  .logo-mark svg { width: 19px; height: 19px; }
+  .logo small { font-size: 10px; color: var(--txt3); font-weight: 600; letter-spacing: 2px; display: block; line-height: 1; margin-top: 2px; }
+  .nav-links { display: flex; align-items: center; gap: 6px; }
+  .nav-links a {
+    font-size: 14.5px; color: var(--txt2); padding: 9px 14px; border-radius: 10px;
+    transition: .25s; font-weight: 500;
+  }
+  .nav-links a:hover { color: #fff; background: rgba(255,255,255,.06); }
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--grad); color: #fff; font-weight: 700; font-size: 14px;
+    padding: 10px 20px; border-radius: 999px; border: 0; cursor: pointer;
+    transition: .3s; box-shadow: 0 6px 20px rgba(255,46,99,.35);
+    font-family: inherit;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,46,99,.5); }
+  .burger { display: none; background: none; border: 0; color: var(--txt); cursor: pointer; padding: 8px; }
+  .burger svg { width: 24px; height: 24px; }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative; min-height: 100vh; display: flex; align-items: center;
+    padding: 140px 0 90px; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(700px 500px at 78% 18%, rgba(255,46,99,.18), transparent 65%),
+      radial-gradient(600px 480px at 12% 82%, rgba(8,217,214,.14), transparent 65%);
+    pointer-events: none;
+  }
+  .grid-bg {
+    position: absolute; inset: 0; pointer-events: none; opacity: .35;
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, #000 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, #000 30%, transparent 80%);
+  }
+  .hero-in { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: 60px; align-items: center; width: 100%; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: rgba(255,46,99,.1); border: 1px solid rgba(255,46,99,.28);
+    padding: 7px 16px 7px 10px; border-radius: 999px; font-size: 13px;
+    color: var(--pri2); font-weight: 600; margin-bottom: 26px;
+  }
+  .dot-live { width: 8px; height: 8px; border-radius: 50%; background: var(--pri); box-shadow: 0 0 0 0 rgba(255,46,99,.7); animation: pulse 1.8s infinite; }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,46,99,.6); }
+    70% { box-shadow: 0 0 0 10px rgba(255,46,99,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,46,99,0); }
+  }
+  .hero h1 {
+    font-size: clamp(40px, 6.4vw, 76px); line-height: 1.05; font-weight: 900;
+    letter-spacing: -2px; margin-bottom: 8px;
+  }
+  .hero h1 .glitch {
+    display: inline-block;
+    background: var(--grad); -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+  }
+  .hero-sub-en {
+    font-size: 13px; letter-spacing: 8px; color: var(--txt3); font-weight: 700;
+    text-transform: uppercase; margin-bottom: 22px;
+  }
+  .hero-lead { font-size: 17px; color: var(--txt2); max-width: 520px; margin-bottom: 34px; }
+  .hero-lead strong { color: var(--txt); font-weight: 700; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px; padding: 14px 28px;
+    border-radius: 999px; font-weight: 700; font-size: 15px; cursor: pointer;
+    border: 0; font-family: inherit; transition: .3s;
+  }
+  .btn-pri { background: var(--grad); color: #fff; box-shadow: 0 8px 26px rgba(255,46,99,.38); }
+  .btn-pri:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(255,46,99,.55); }
+  .btn-ghost { background: rgba(255,255,255,.05); color: var(--txt); border: 1px solid var(--line); }
+  .btn-ghost:hover { background: rgba(255,255,255,.1); border-color: #3a4260; transform: translateY(-3px); }
+  .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+  .hstat b { font-size: 28px; font-weight: 900; display: block; line-height: 1.1; background: var(--grad2); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hstat span { font-size: 12.5px; color: var(--txt3); letter-spacing: 1px; }
+
+  /* Hero visual */
+  .hero-vis { position: relative; }
+  .stage {
+    position: relative; border-radius: 24px; overflow: hidden;
+    border: 1px solid var(--line); background: var(--bg2);
+    box-shadow: var(--shadow); aspect-ratio: 4/4.4;
+  }
+  .stage video, .stage .fake-video { width: 100%; height: 100%; object-fit: cover; }
+  .fake-video {
+    position: relative; background:
+      radial-gradient(circle at 30% 20%, #2a1a2e, transparent 60%),
+      radial-gradient(circle at 75% 80%, #0e2c2e, transparent 60%),
+      #12141c;
+    display: flex; align-items: flex-end;
+  }
+  .vfx {
+    position: absolute; inset: 0; overflow: hidden;
+  }
+  .vfx .bar {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 8px; background: var(--grad); border-radius: 8px 8px 0 0; opacity: .85;
+    animation: eq 1.2s ease-in-out infinite alternate;
+  }
+  @keyframes eq { from { transform: translateX(-50%) scaleY(.25); } to { transform: translateX(-50%) scaleY(1); } }
+  .vfx .ring {
+    position: absolute; border-radius: 50%; border: 2px solid rgba(255,46,99,.35);
+    top: 50%; left: 50%; animation: ripple 4s ease-out infinite;
+  }
+  @keyframes ripple {
+    0% { width: 40px; height: 40px; margin: -20px 0 0 -20px; opacity: .9; }
+    100% { width: 520px; height: 520px; margin: -260px 0 0 -260px; opacity: 0; }
+  }
+  .vfx .ring:nth-child(2) { animation-delay: 1.3s; border-color: rgba(8,217,214,.3); }
+  .vfx .ring:nth-child(3) { animation-delay: 2.6s; }
+  .stage-overlay {
+    position: absolute; inset: 0; z-index: 3;
+    background: linear-gradient(to top, rgba(11,12,16,.92) 0%, rgba(11,12,16,.1) 45%, transparent 70%);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 26px;
+  }
+  .play-btn {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 78px; height: 78px; border-radius: 50%; z-index: 4;
+    background: rgba(255,255,255,.1); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.3); display: grid; place-items: center;
+    cursor: pointer; transition: .3s;
+  }
+  .play-btn:hover { background: var(--pri); border-color: var(--pri); transform: translate(-50%,-50%) scale(1.08); }
+  .play-btn svg { width: 26px; height: 26px; margin-left: 4px; fill: #fff; }
+  .stage-meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+  .stage-meta h4 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  .stage-meta p { font-size: 12.5px; color: var(--txt2); }
+  .timecode { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--sec2); background: rgba(8,217,214,.12); padding: 4px 10px; border-radius: 8px; white-space: nowrap; }
+  .float-card {
+    position: absolute; background: rgba(23,26,38,.85); backdrop-filter: blur(12px);
+    border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px;
+    box-shadow: var(--shadow); z-index: 5; animation: floaty 5s ease-in-out infinite;
+  }
+  .float-card.fc1 { top: 8%; left: -26px; }
+  .float-card.fc2 { bottom: 16%; right: -22px; animation-delay: 1.6s; }
+  @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  .float-card .fc-t { font-size: 11px; color: var(--txt3); letter-spacing: 1px; margin-bottom: 3px; }
+  .float-card .fc-v { font-size: 16px; font-weight: 800; color: var(--sec2); }
+  .float-card .fc-v.pink { color: var(--pri2); }
+
+  /* ============ TICKER ============ */
+  .ticker {
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    background: var(--bg2); overflow: hidden; padding: 16px 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .ticker-track { display: flex; gap: 44px; width: max-content; animation: scrollx 34s linear infinite; }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+  @keyframes scrollx { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .ticker-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--txt2); white-space: nowrap; font-weight: 500; }
+  .ticker-item i { width: 6px; height: 6px; border-radius: 50%; background: var(--pri); display: inline-block; }
+  .ticker-item b { color: var(--txt); font-weight: 700; }
+
+  /* ============ WORK GRID ============ */
+  .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 34px; }
+  .chip {
+    padding: 9px 20px; border-radius: 999px; font-size: 14px; font-weight: 600;
+    background: var(--bg2); border: 1px solid var(--line); color: var(--txt2);
+    cursor: pointer; transition: .25s; font-family: inherit;
+  }
+  .chip:hover { color: #fff; border-color: #3a4260; }
+  .chip.active { background: var(--grad); border-color: transparent; color: #fff; box-shadow: 0 6px 20px rgba(255,46,99,.3); }
+
+  .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .work-card {
+    background: var(--card); border-radius: var(--rad); overflow: hidden;
+    border: 1px solid var(--line); transition: .35s; cursor: pointer;
+    position: relative;
+  }
+  .work-card:hover { transform: translateY(-8px); border-color: rgba(255,46,99,.4); box-shadow: 0 20px 48px rgba(0,0,0,.55); }
+  .work-thumb { position: relative; aspect-ratio: 16/10; overflow: hidden; }
+  .work-thumb .cover { width: 100%; height: 100%; transition: .5s; }
+  .work-card:hover .cover { transform: scale(1.06); }
+  .cover { position: relative; }
+  .cover .c-shape { position: absolute; inset: 0; }
+  .work-dur {
+    position: absolute; bottom: 10px; right: 10px; font-size: 11.5px;
+    background: rgba(0,0,0,.7); color: #fff; padding: 3px 8px; border-radius: 6px;
+    font-family: ui-monospace, monospace; z-index: 2;
+  }
+  .work-tag {
+    position: absolute; top: 10px; left: 10px; font-size: 11.5px; font-weight: 700;
+    background: var(--grad); color: #fff; padding: 4px 10px; border-radius: 6px; z-index: 2;
+  }
+  .work-body { padding: 18px 20px 20px; }
+  .work-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; line-height: 1.4; transition: .25s; }
+  .work-card:hover .work-body h3 { color: var(--pri2); }
+  .work-info { display: flex; align-items: center; justify-content: space-between; font-size: 12.5px; color: var(--txt3); }
+  .work-author { display: flex; align-items: center; gap: 7px; }
+  .ava { width: 22px; height: 22px; border-radius: 50%; flex: 0 0 auto; }
+  .work-views { display: flex; align-items: center; gap: 5px; }
+  .work-views svg { width: 14px; height: 14px; fill: var(--txt3); }
+
+  /* ============ FEATURE ============ */
+  .feature-wrap {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  .feat {
+    background: linear-gradient(160deg, var(--bg3), var(--bg2));
+    border: 1px solid var(--line); border-radius: var(--rad); padding: 34px 28px;
+    transition: .35s; position: relative; overflow: hidden;
+  }
+  .feat::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+    background: var(--grad); transform: scaleX(0); transform-origin: left; transition: .4s;
+  }
+  .feat:hover::before { transform: scaleX(1); }
+  .feat:hover { transform: translateY(-6px); border-color: rgba(255,46,99,.3); }
+  .feat-ico {
+    width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center;
+    background: rgba(255,46,99,.12); margin-bottom: 22px;
+  }
+  .feat-ico svg { width: 26px; height: 26px; stroke: var(--pri2); fill: none; stroke-width: 1.8; }
+  .feat:nth-child(2) .feat-ico { background: rgba(8,217,214,.12); }
+  .feat:nth-child(2) .feat-ico svg { stroke: var(--sec2); }
+  .feat:nth-child(3) .feat-ico { background: rgba(255,154,90,.12); }
+  .feat:nth-child(3) .feat-ico svg { stroke: #ff9a5a; }
+  .feat h3 { font-size: 19px; font-weight: 800; margin-bottom: 10px; }
+  .feat p { font-size: 14px; color: var(--txt2); line-height: 1.75; }
+
+  /* ============ ABOUT / TEXT ============ */
+  .about { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .about-text p { color: var(--txt2); margin-bottom: 20px; font-size: 15.5px; }
+  .about-text p strong { color: var(--txt); }
+  .about-points { margin-top: 30px; display: grid; gap: 16px; }
+  .point { display: flex; gap: 14px; align-items: flex-start; }
+  .point-ck {
+    width: 26px; height: 26px; border-radius: 8px; flex: 0 0 auto;
+    background: rgba(8,217,214,.14); display: grid; place-items: center; margin-top: 2px;
+  }
+  .point-ck svg { width: 15px; height: 15px; stroke: var(--sec2); fill: none; stroke-width: 2.5; }
+  .point b { display: block; font-size: 15px; margin-bottom: 2px; }
+  .point span { font-size: 13.5px; color: var(--txt2); }
+  .about-vis {
+    position: relative; aspect-ratio: 1/1; border-radius: 24px; overflow: hidden;
+    border: 1px solid var(--line); background: var(--bg3);
+    display: grid; place-items: center;
+  }
+  .orbit { position: absolute; border-radius: 50%; border: 1px dashed rgba(255,255,255,.1); }
+  .orbit.o1 { width: 80%; height: 80%; animation: spin 26s linear infinite; }
+  .orbit.o2 { width: 58%; height: 58%; animation: spin 18s linear infinite reverse; border-color: rgba(8,217,214,.18); }
+  .orbit.o3 { width: 36%; height: 36%; animation: spin 12s linear infinite; border-color: rgba(255,46,99,.2); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .orbit .node {
+    position: absolute; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--pri); top: -6px; left: 50%; transform: translateX(-50%);
+    box-shadow: 0 0 14px var(--pri);
+  }
+  .orbit.o2 .node { background: var(--sec); box-shadow: 0 0 14px var(--sec); }
+  .orbit.o3 .node { background: #ff9a5a; box-shadow: 0 0 14px #ff9a5a; }
+  .about-core {
+    width: 120px; height: 120px; border-radius: 50%; background: var(--grad);
+    display: grid; place-items: center; box-shadow: 0 0 60px rgba(255,46,99,.5);
+    z-index: 2;
+  }
+  .about-core svg { width: 46px; height: 46px; fill: #fff; }
+  .about-badge {
+    position: absolute; bottom: 24px; right: 24px; font-size: 12px; color: var(--txt3);
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+
+  /* ============ BLOG / JOURNAL ============ */
+  .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .post {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--rad);
+    overflow: hidden; transition: .35s; cursor: pointer;
+  }
+  .post:hover { transform: translateY(-6px); border-color: rgba(8,217,214,.35); }
+  .post-cover { aspect-ratio: 16/9; position: relative; overflow: hidden; }
+  .post-cover .cover { width: 100%; height: 100%; transition: .5s; }
+  .post:hover .cover { transform: scale(1.05); }
+  .post-body { padding: 22px 22px 24px; }
+  .post-date { font-size: 12px; color: var(--sec2); letter-spacing: 1px; margin-bottom: 10px; font-weight: 600; }
+  .post-body h3 { font-size: 17px; font-weight: 700; line-height: 1.45; margin-bottom: 10px; transition: .25s; }
+  .post:hover h3 { color: var(--sec2); }
+  .post-body p { font-size: 13.5px; color: var(--txt2); line-height: 1.7; }
+
+  /* ============ STATS BAND ============ */
+  .band {
+    background: var(--grad); padding: 64px 0; position: relative; overflow: hidden;
+  }
+  .band::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,.2) 1px, transparent 1px);
+    background-size: 22px 22px; opacity: .5;
+  }
+  .band-in { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
+  .band-num { font-size: clamp(30px, 4.4vw, 46px); font-weight: 900; line-height: 1.1; color: #fff; letter-spacing: -1px; }
+  .band-lab { font-size: 13.5px; color: rgba(255,255,255,.85); margin-top: 6px; font-weight: 600; letter-spacing: 1px; }
+
+  /* ============ CREATORS ============ */
+  .creator-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .creator {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--rad);
+    padding: 28px 20px; text-align: center; transition: .35s;
+  }
+  .creator:hover { transform: translateY(-6px); border-color: rgba(255,46,99,.35); background: var(--bg3); }
+  .creator-ava { width: 76px; height: 76px; border-radius: 50%; margin: 0 auto 16px; }
+  .creator h4 { font-size: 15.5px; font-weight: 700; margin-bottom: 4px; }
+  .creator .role { font-size: 12.5px; color: var(--pri2); margin-bottom: 12px; }
+  .creator .desc { font-size: 12.5px; color: var(--txt2); line-height: 1.65; margin-bottom: 16px; min-height: 40px; }
+  .creator .fans { font-size: 12px; color: var(--txt3); display: flex; align-items: center; justify-content: center; gap: 5px; }
+  .creator .fans svg { width: 13px; height: 13px; fill: var(--txt3); }
+
+  /* ============ FAQ ============ */
+  .faq-list { display: grid; gap: 14px; max-width: 860px; margin: 0 auto; }
+  .faq-item {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden; transition: .3s;
+  }
+  .faq-item.open { border-color: rgba(255,46,99,.35); }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: 0; color: var(--txt);
+    font-family: inherit; font-size: 15.5px; font-weight: 600; padding: 20px 24px;
+    cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .faq-q .ic { width: 22px; height: 22px; flex: 0 0 auto; position: relative; transition: .3s; }
+  .faq-q .ic::before, .faq-q .ic::after {
+    content: ""; position: absolute; background: var(--pri2); border-radius: 2px;
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+  }
+  .faq-q .ic::before { width: 13px; height: 2px; }
+  .faq-q .ic::after { width: 2px; height: 13px; transition: .3s; }
+  .faq-item.open .faq-q .ic::after { transform: translate(-50%,-50%) rotate(90deg); opacity: 0; }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+  .faq-a p { padding: 0 24px 22px; color: var(--txt2); font-size: 14.5px; line-height: 1.8; }
+
+  /* ============ CTA ============ */
+  .cta-sec { padding: 100px 0; }
+  .cta-box {
+    position: relative; border-radius: 28px; overflow: hidden; padding: 72px 48px;
+    text-align: center; background: var(--bg3); border: 1px solid var(--line);
+  }
+  .cta-box::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(500px 300px at 20% 0%, rgba(255,46,99,.22), transparent 60%),
+      radial-gradient(500px 300px at 85% 100%, rgba(8,217,214,.18), transparent 60%);
+  }
+  .cta-in { position: relative; }
+  .cta-in h2 { font-size: clamp(26px, 4vw, 40px); font-weight: 900; margin-bottom: 16px; letter-spacing: -.5px; }
+  .cta-in p { color: var(--txt2); max-width: 560px; margin: 0 auto 34px; font-size: 15.5px; }
+  .cta-form { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; flex-wrap: wrap; }
+  .cta-form input {
+    flex: 1; min-width: 200px; padding: 14px 20px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--bg); color: var(--txt);
+    font-family: inherit; font-size: 14.5px; outline: none; transition: .25s;
+  }
+  .cta-form input:focus { border-color: var(--pri); box-shadow: 0 0 0 3px rgba(255,46,99,.15); }
+  .cta-form input::placeholder { color: var(--txt3); }
+  .cta-note { font-size: 12.5px; color: var(--txt3); margin-top: 18px; }
+  .toast {
+    position: fixed; bottom: 30px; left: 50%; transform: translate(-50%, 120px);
+    background: var(--grad); color: #fff; padding: 13px 26px; border-radius: 12px;
+    font-size: 14px; font-weight: 600; z-index: 2000; transition: .4s;
+    box-shadow: 0 10px 30px rgba(255,46,99,.4); pointer-events: none;
+  }
+  .toast.show { transform: translate(-50%, 0); }
+
+  /* ============ FOOTER ============ */
+  footer { background: var(--bg2); border-top: 1px solid var(--line); padding: 64px 0 28px; }
+  .foot-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+  .foot-brand .logo { margin-bottom: 18px; }
+  .foot-brand p { font-size: 13.5px; color: var(--txt2); max-width: 300px; line-height: 1.8; }
+  .foot-socials { display: flex; gap: 10px; margin-top: 22px; }
+  .social {
+    width: 38px; height: 38px; border-radius: 10px; background: var(--bg3);
+    border: 1px solid var(--line); display: grid; place-items: center; transition: .25s;
+  }
+  .social:hover { background: var(--grad); border-color: transparent; transform: translateY(-3px); }
+  .social svg { width: 17px; height: 17px; fill: var(--txt2); }
+  .social:hover svg { fill: #fff; }
+  .foot-col h5 { font-size: 14px; font-weight: 700; margin-bottom: 18px; color: var(--txt); }
+  .foot-col ul { display: grid; gap: 11px; }
+  .foot-col a { font-size: 13.5px; color: var(--txt2); transition: .2s; }
+  .foot-col a:hover { color: var(--pri2); padding-left: 4px; }
+  .foot-bottom {
+    border-top: 1px solid var(--line); padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    font-size: 12.5px; color: var(--txt3);
+  }
+  .foot-bottom .links { display: flex; gap: 20px; }
+  .foot-bottom a:hover { color: var(--txt); }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1024px) {
+    .hero-in { grid-template-columns: 1fr; gap: 50px; }
+    .hero-vis { max-width: 460px; margin: 0 auto; width: 100%; }
+    .about-grid { grid-template-columns: 1fr; gap: 44px; }
+    .about-vis { max-width: 440px; margin: 0 auto; width: 100%; }
+    .feature-wrap, .journal-grid { grid-template-columns: repeat(2, 1fr); }
+    .creator-grid { grid-template-columns: repeat(2, 1fr); }
+    .work-grid { grid-template-columns: repeat(2, 1fr); }
+    .foot-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0;
+      background: rgba(11,12,16,.98); border-bottom: 1px solid var(--line); padding: 16px;
+      gap: 4px; align-items: stretch;
+    }
+    .nav-links.open a { padding: 12px 16px; }
+    .burger { display: block; }
+    .sec { padding: 64px 0; }
+    .hero { padding: 110px 0 64px; }
+    .hero-stats { gap: 26px; }
+    .hstat b { font-size: 22px; }
+    .feature-wrap, .journal-grid, .work-grid, .creator-grid, .band-in { grid-template-columns: 1fr; }
+    .band-in { grid-template-columns: 1fr 1fr; gap: 26px; }
+    .cta-box { padding: 48px 24px; }
+    .float-card.fc1 { left: 6px; }
+    .float-card.fc2 { right: 6px; }
+    .foot-top { grid-template-columns: 1fr; gap: 32px; }
+    .foot-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg>
+      </span>
+      <span>蜜臂MV<small>九一 · MV91</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#works">精选作品</a>
+      <a href="#feature">平台能力</a>
+      <a href="#about">关于我们</a>
+      <a href="#journal">影像手记</a>
+      <a href="#creators">创作者</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <button class="nav-cta" onclick="scrollToCta()">申请入驻</button>
+    <button class="burger" id="burger" aria-label="菜单">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="grid-bg"></div>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <span class="hero-badge"><span class="dot-live"></span>本周新增 1,286 支原创 MV</span>
+      <h1>蜜臂<span class="glitch">MV</span></h1>
+      <div class="hero-sub-en">JIUYI · MV91 · VISUAL COMMUNITY</div>
+      <p class="hero-lead">
+        <strong>蜜臂MV（九一MV91）</strong>是一个以创意短片与视觉作品为核心的内容社区。这里聚集了导演、剪辑师、编舞、音乐人与影像爱好者，用镜头记录灵感，用画面连接彼此。
+      </p>
+      <div class="hero-btns">
+        <button class="btn btn-pri" onclick="scrollToId('works')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          浏览作品
+        </button>
+        <button class="btn btn-ghost" onclick="scrollToId('about')">
+          了解社区
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><b>120K+</b><span>注册创作者</span></div>
+        <div class="hstat"><b>86,400+</b><span>在线作品</span></div>
+        <div class="hstat"><b>3.2亿</b><span>月度播放</span></div>
+      </div>
+    </div>
+
+    <div class="hero-vis">
+      <div class="stage">
+        <div class="fake-video">
+          <div class="vfx">
+            <span class="ring"></span>
+            <span class="ring"></span>
+            <span class="ring"></span>
+            <span class="bar" style="height:60%;left:18%;animation-delay:.1s"></span>
+            <span class="bar" style="height:85%;left:30%;animation-delay:.3s"></span>
+            <span class="bar" style="height:45%;left:42%;animation-delay:.5s"></span>
+            <span class="bar" style="height:70%;left:54%;animation-delay:.2s"></span>
+            <span class="bar" style="height:95%;left:66%;animation-delay:.4s"></span>
+            <span class="bar" style="height:55%;left:78%;animation-delay:.6s"></span>
+          </div>
+          <div class="play-btn" onclick="playDemo()">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="stage-overlay">
+            <div class="stage-meta">
+              <div>
+                <h4>把城市拍成一首诗 · 蜜臂MV 年度共创</h4>
+                <p>@九一影像社 · 参与共创 248 人</p>
+              </div>
+              <span class="timecode">04:26</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="float-card fc1">
+        <div class="fc-t">实时在线</div>
+        <div class="fc-v">12,840 人</div>
+      </div>
+      <div class="float-card fc2">
+        <div class="fc-t">今日三连</div>
+        <div class="fc-v pink">+ 38,290</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-item"><i></i><b>#蜜臂MV城市漫游</b> 正在热映</div>
+    <div class="ticker-item"><i></i><b>#九一MV91编舞挑战</b> 本周开启</div>
+    <div class="ticker-item"><i></i><b>#光影叙事</b> 新人扶持计划上线</div>
+    <div class="ticker-item"><i></i><b>#一镜到底</b> 获奖作品公开</div>
+    <div class="ticker-item"><i></i><b>#像素对话</b> 视觉实验展映中</div>
+    <div class="ticker-item"><i></i><b>#蜜臂MV原创音乐</b> 授权曲库更新</div>
+    <div class="ticker-item"><i></i><b>#九一影像社</b> 招募联合制片</div>
+  </div>
+</div>
+
+<!-- ================= WORKS ================= -->
+<section class="sec" id="works">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Featured Works</span>
+      <h2 class="sec-title">在<em>蜜臂MV</em>，每一帧都值得被看见</h2>
+      <p class="sec-desc">从城市影像到舞蹈短片，从实验视觉到音乐现场，蜜臂MV 的社区作者持续输出风格各异的作品。以下为近期高热度精选，涵盖多个创作方向。</p>
+    </div>
+
+    <div class="filters reveal">
+      <button class="chip active" data-filter="all">全部</button>
+      <button class="chip" data-filter="city">城市影像</button>
+      <button class="chip" data-filter="dance">舞蹈短片</button>
+      <button class="chip" data-filter="music">音乐现场</button>
+      <button class="chip" data-filter="exp">视觉实验</button>
+    </div>
+
+    <div class="work-grid" id="workGrid">
+      <!-- cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURE ================= -->
+<section class="sec" id="feature" style="background: var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Platform</span>
+      <h2 class="sec-title">为创作者准备的<em>完整工作台</em></h2>
+      <p class="sec-desc">蜜臂MV 不只展示作品，更为创作全流程提供支持。从素材、剪辑到发布与分发，创作者可以在一处完成所有事情。</p>
+    </div>
+    <div class="feature-wrap">
+      <div class="feat reveal">
+        <div class="feat-ico">
+          <svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>
+        </div>
+        <h3>高清创作工具</h3>
+        <p>内置在线剪辑与调色面板，支持 4K 时间线预览、片段拼接与字幕合成，让灵感从草稿直接走向成片。</p>
+      </div>
+      <div class="feat reveal">
+        <div class="feat-ico">
+          <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
+        </div>
+        <h3>智能分发推荐</h3>
+        <p>基于内容标签与观众画像的推荐机制，让优质作品找到对的观众，新人也能获得稳定的首轮曝光机会。</p>
+      </div>
+      <div class="feat reveal">
+        <div class="feat-ico">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>共创社群网络</h3>
+        <p>导演、摄影、编舞、音乐人可以在社区内互相关注、发起联合创作，组成跨领域的团队，完成更具野心的影像项目。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="sec about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-text reveal">
+      <span class="sec-tag">About MV91</span>
+      <h2 class="sec-title" style="margin-bottom:24px;">关于<em>蜜臂MV</em>与九一MV91</h2>
+      <p><strong>蜜臂MV（九一MV91）</strong>最初诞生于一群热爱影像的创作者之间。他们希望有一个地方可以自由地发布自己的作品，被理解、被讨论，而不只是被消遣。于是，一个以作品质量与社区氛围为先的视频平台逐渐成形。</p>
+      <p>今天，蜜臂MV 承载着来自各地的原创 MV、短片、舞蹈影像与视觉实验。我们相信，好的影像能让人停下来，多看几秒，然后想起某段生活。平台坚持内容可见性与创作友好度并重，让创作者专注于表达本身。</p>
+      <div class="about-points">
+        <div class="point">
+          <span class="point-ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div><b>原创优先</b><span>鼓励原创内容，尊重创作者的版权与署名。</span></div>
+        </div>
+        <div class="point">
+          <span class="point-ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div><b>社区共治</b><span>规则透明，举报与反馈机制持续迭代。</span></div>
+        </div>
+        <div class="point">
+          <span class="point-ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div><b>长期主义</b><span>不追逐短期热度，陪创作者一起成长。</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="about-vis reveal">
+      <span class="orbit o1"><span class="node"></span></span>
+      <span class="orbit o2"><span class="node"></span></span>
+      <span class="orbit o3"><span class="node"></span></span>
+      <div class="about-core">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <span class="about-badge">JIUYI MV91</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS BAND ================= -->
+<div class="band">
+  <div class="wrap band-in">
+    <div><div class="band-num" data-count="128600">0</div><div class="band-lab">累计创作者</div></div>
+    <div><div class="band-num" data-count="86400">0</div><div class="band-lab">在线作品</div></div>
+    <div><div class="band-num" data-count="320">0</div><div class="band-lab">月度播放（百万）</div></div>
+    <div><div class="band-num" data-count="42">0</div><div class="band-lab">合作机构</div></div>
+  </div>
+</div>
+
+<!-- ================= JOURNAL ================= -->
+<section class="sec" id="journal">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Journal</span>
+      <h2 class="sec-title">影像手记 · <em>创作幕后</em></h2>
+      <p class="sec-desc">创作经验、器材心得、后期技巧与社区故事，蜜臂MV 编辑部与创作者共同整理，持续更新。</p>
+    </div>
+    <div class="journal-grid">
+      <article class="post reveal">
+        <div class="post-cover"><div class="cover" id="post1"></div></div>
+        <div class="post-body">
+          <div class="post-date">2024 · 影像方法</div>
+          <h3>用一支镜头讲完一个故事：一镜到底的六种调度思路</h3>
+          <p>长镜头并不只是炫技。从空间引导到情绪递进，我们整理了社区作者在蜜臂MV 上实践过的六种调度方法。</p>
+        </div>
+      </article>
+      <article class="post reveal">
+        <div class="post-cover"><div class="cover" id="post2"></div></div>
+        <div class="post-body">
+          <div class="post-date">2024 · 声音设计</div>
+          <h3>让画面呼吸：短视频环境声与配乐的层次搭配</h3>
+          <p>音乐不是背景板。九一MV91 的声音创作者分享了三条经验，让声音成为画面之外的第二叙事线。</p>
+        </div>
+      </article>
+      <article class="post reveal">
+        <div class="post-cover"><div class="cover" id="post3"></div></div>
+        <div class="post-body">
+          <div class="post-date">2024 · 社区观察</div>
+          <h3>新人如何被看见：蜜臂MV 首月曝光机制说明</h3>
+          <p>我们拆解了推荐系统对新人作品的冷启动策略，以及创作者在发布时可以做对的几件小事。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CREATORS ================= -->
+<section class="sec" id="creators" style="background: var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Creators</span>
+      <h2 class="sec-title">活跃在<em>蜜臂MV</em>的创作者</h2>
+      <p class="sec-desc">他们是导演、摄影、编舞、音乐制作人，也是普通的影像爱好者。正是这些不同视角的创作者，让九一MV91 的内容生态保持鲜活。</p>
+    </div>
+    <div class="creator-grid" id="creatorGrid"></div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;">
+      <span class="sec-tag" style="justify-content:center;">FAQ</span>
+      <h2 class="sec-title">关于<em>蜜臂MV</em>的常见问题</h2>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta-sec" id="cta">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div class="cta-in">
+        <h2>加入蜜臂MV，让作品被更多人看见</h2>
+        <p>无论你已经在剪辑、拍摄或编舞，还是刚刚开始接触影像创作，九一MV91 都欢迎你的加入。留下邮箱，我们会发送入驻指引与社区规则。</p>
+        <form class="cta-form" onsubmit="subscribe(event)">
+          <input type="email" id="emailInput" placeholder="请输入你的邮箱地址" required>
+          <button type="submit" class="btn btn-pri">立即申请</button>
+        </form>
+        <p class="cta-note">我们尊重你的隐私，邮箱仅用于发送入驻相关通知。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="logo">
+          <span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span>
+          <span>蜜臂MV<small>九一 · MV91</small></span>
+        </a>
+        <p>蜜臂MV 是一个以创意短片与视觉影像为核心的视频内容社区，由九一MV91 团队运营，致力于让优质原创作品被更多人看见。</p>
+        <div class="foot-socials">
+          <a class="social" href="javascript:void(0)" aria-label="微博"><svg viewBox="0 0 24 24"><path d="M10 18c-4 0-7-2-7-5s3-7 7-7 6 2 6 5-2 7-6 7zm0-10c-3 0-5 3-5 5s2 3 5 3 5-1 5-3-2-5-5-5z"/></svg></a>
+          <a class="social" href="javascript:void(0)" aria-label="微信"><svg viewBox="0 0 24 24"><path d="M9 4C5 4 2 6 2 9c0 2 1 3 3 4l-1 3 3-2c1 0 2 1 4 1 3 0 6-2 6-5S12 4 9 4zm5 9c-1 0-2 0-3-1 1-3 4-5 7-5s6 2 6 5-3 5-6 5c-1 0-2 0-3-1l-2 1 1-2z"/></svg></a>
+          <a class="social" href="javascript:void(0)" aria-label="抖音"><svg viewBox="0 0 24 24"><path d="M16 3c1 3 3 5 6 5v4c-2 0-4-1-6-2v6a6 6 0 1 1-6-6v4a2 2 0 1 0 2 2V3h4z"/></svg></a>
+          <a class="social" href="javascript:void(0)" aria-label="小红书"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" opacity=".2"/><path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>平台</h5>
+        <ul>
+          <li><a href="#works">精选作品</a></li>
+          <li><a href="#feature">平台能力</a></li>
+          <li><a href="#creators">创作者</a></li>
+          <li><a href="#journal">影像手记</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>社区</h5>
+        <ul>
+          <li><a href="#about">关于蜜臂MV</a></li>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="javascript:void(0)">社区公约</a></li>
+          <li><a href="javascript:void(0)">版权说明</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>联系</h5>
+        <ul>
+          <li><a href="mailto:hello@mv91.example">hello@mv91.example</a></li>
+          <li><a href="javascript:void(0)">商务合作</a></li>
+          <li><a href="javascript:void(0)">内容举报</a></li>
+          <li><a href="javascript:void(0)">加入我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2024 蜜臂MV · 九一MV91。保留所有权利。</span>
+      <div class="links">
+        <a href="javascript:void(0)">用户协议</a>
+        <a href="javascript:void(0)">隐私政策</a>
+        <a href="javascript:void(0)">未成年人保护</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">已提交，请留意邮箱通知</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- nav scroll ---------- */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 30) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  /* ---------- burger ---------- */
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', function () {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') navLinks.classList.remove('open');
+  });
+
+  /* ---------- helpers ---------- */
+  function scrollToId(id) {
+    var el = document.getElementById(id);
+    if (el) {
+      var top = el.getBoundingClientRect().top + window.scrollY - 68;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  }
+  window.scrollToCta = function () { scrollToId('cta'); };
+  window.scrollToId = scrollToId;
+  window.playDemo = function () {
+    showToast('演示视频：蜜臂MV 年度共创预告片');
+  };
+
+  /* ---------- toast ---------- */
+  var toast = document.getElementById('toast');
+  var toastTimer;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2600);
+  }
+
+  /* ---------- gradient cover generator ---------- */
+  var palettes = [
+    ['#ff2e63', '#7b1e3a', '#1a1d2b', '#ff6b9d'],
+    ['#08d9d6', '#0b3a3c', '#12141c', '#3af0ed'],
+    ['#ff9a5a', '#5a2e1e', '#1a1d2b', '#ffc07a'],
+    ['#8b5cf6', '#2a1d4a', '#12141c', '#c4a7ff'],
+    ['#f43f5e', '#3a1420', '#171a26', '#fb7185'],
+    ['#22d3ee', '#123b44', '#12141c', '#67e8f9'],
+    ['#eab308', '#423712', '#1a1d2b', '#fde047'],
+    ['#ec4899', '#3d1530', '#171a26', '#f9a8d4'],
+    ['#10b981', '#103a2c', '#12141c', '#6ee7b7'],
+    ['#f97316', '#43240f', '#1a1d2b', '#fdba74'],
+    ['#6366f1', '#1e1f4a', '#12141c', '#a5b4fc'],
+    ['#14b8a6', '#0d3a36', '#171a26', '#5eead4']
+  ];
+
+  function makeCover(seed, type) {
+    var p = palettes[seed % palettes.length];
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">';
+    svg += '<defs>';
+    svg += '<linearGradient id="g' + seed + '" x1="0" y1="0" x2="1" y2="1">';
+    svg += '<stop offset="0%" stop-color="' + p[1] + '"/>';
+    svg += '<stop offset="100%" stop-color="' + p[2] + '"/>';
+    svg += '</linearGradient>';
+    svg += '<radialGradient id="r' + seed + '" cx="' + (30 + (seed * 13) % 40) + '%" cy="' + (25 + (seed * 17) % 30) + '%" r="60%">';
+    svg += '<stop offset="0%" stop-color="' + p[0] + '" stop-opacity="0.55"/>';
+    svg += '<stop offset="100%" stop-color="' + p[0] + '" stop-opacity="0"/>';
+    svg += '</radialGradient>';
+    svg += '</defs>';
+    svg += '<rect width="400" height="250" fill="url(#g' + seed + ')"/>';
+    svg += '<rect width="400" height="250" fill="url(#r' + seed + ')"/>';
+
+    if (type === 'dance') {
+      for (var i = 0; i < 5; i++) {
+        var cx = 80 + i * 60, cy = 130 + Math.sin(i) * 25;
+        svg += '<circle cx="' + cx + '" cy="' + cy + '" r="' + (14 + i * 3) + '" fill="none" stroke="' + p[3] + '" stroke-opacity="0.6" stroke-width="2"/>';
+      }
+      svg += '<path d="M40 200 Q120 80 200 160 T360 100" fill="none" stroke="' + p[0] + '" stroke-width="3" stroke-opacity="0.7"/>';
+    } else if (type === 'city') {
+      for (var b = 0; b < 7; b++) {
+        var bh = 60 + ((seed * (b + 3)) % 120);
+        svg += '<rect x="' + (30 + b * 52) + '" y="' + (230 - bh) + '" width="40" height="' + bh + '" fill="' + p[3] + '" fill-opacity="' + (0.12 + b * 0.03) + '"/>';
+      }
+      svg += '<circle cx="320" cy="60" r="26" fill="' + p[0] + '" fill-opacity="0.5"/>';
+    } else if (type === 'music') {
+      for (var w = 0; w < 24; w++) {
+        var hh = 20 + ((seed * (w + 7)) % 110);
+        svg += '<rect x="' + (24 + w * 15) + '" y="' + (210 - hh) + '" width="7" height="' + hh + '" rx="3" fill="' + p[0] + '" fill-opacity="' + (0.3 + (w % 5) * 0.12) + '"/>';
+      }
+    } else {
+      for (var s = 0; s < 4; s++) {
+        svg += '<circle cx="' + (100 + s * 70) + '" cy="' + (90 + (s % 2) * 70) + '" r="' + (26 + s * 12) + '" fill="none" stroke="' + p[3] + '" stroke-opacity="0.35" stroke-width="1.6"/>';
+      }
+      svg += '<path d="M0 200 L400 60" stroke="' + p[0] + '" stroke-width="2" stroke-opacity="0.5"/>';
+      svg += '<path d="M0 220 L400 90" stroke="' + p[0] + '" stroke-width="1" stroke-opacity="0.3"/>';
+    }
+
+    svg += '<rect width="400" height="250" fill="none"/>';
+    svg += '</svg>';
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  }
+
+  function makeAvatar(seed) {
+    var p = palettes[seed % palettes.length];
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">';
+    svg += '<defs><linearGradient id="a' + seed + '" x1="0" y1="0" x2="1" y2="1">';
+    svg += '<stop offset="0%" stop-color="' + p[0] + '"/><stop offset="100%" stop-color="' + p[3] + '"/>';
+    svg += '</linearGradient></defs>';
+    svg += '<rect width="100" height="100" fill="url(#a' + seed + ')"/>';
+    svg += '<circle cx="50" cy="40" r="18" fill="#fff" fill-opacity="0.85"/>';
+    svg += '<path d="M18 92 Q50 58 82 92 Z" fill="#fff" fill-opacity="0.75"/>';
+    svg += '</svg>';
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  }
+
+  /* ---------- works data ---------- */
+  var works = [
+    { t: '城市剪影 · 凌晨四点的第 39 条街', a: '九一影像社', c: 'city', d: '04:12', v: '28.6万', cat: '城市影像' },
+    { t: '霓虹共振 · 光影舞蹈肢体短片', a: '阿肆', c: 'dance', d: '02:48', v: '19.2万', cat: '舞蹈短片' },
+    { t: 'Live Session · 地下车库的电子现场', a: 'MUTE 乐队', c: 'music', d: '06:30', v: '31.4万', cat: '音乐现场' },
+    { t: '像素与胶片 · 一次跨介质的视觉实验', a: '林一白', c: 'exp', d: '03:05', v: '12.7万', cat: '视觉实验' },
+    { t: '潮汐线 · 海边的长镜头日记', a: '海盐工作室', c: 'city', d: '05:22', v: '22.9万', cat: '城市影像' },
+    { t: '身体叙事 · 十二个人的同一段编舞', a: '编舞厂牌 K7', c: 'dance', d: '08:16', v: '40.1万', cat: '舞蹈短片' },
+    { t: '雨声采样 · 一首关于夏天的 MV', a: '陈小满', c: 'music', d: '03:52', v: '17.5万', cat: '音乐现场' },
+    { t: '镜像房间 · 自我对话的实验影像', a: '无界小组', c: 'exp', d: '04:44', v: '9.8万', cat: '视觉实验' },
+    { t: '天台之光 · 城市黄昏延时纪录', a: '九一MV91', c: 'city', d: '06:08', v: '26.3万', cat: '城市影像' }
+  ];
+
+  var workGrid = document.getElementById('workGrid');
+  function renderWorks(filter) {
+    workGrid.innerHTML = '';
+    works.forEach(function (w, i) {
+      if (filter && filter !== 'all' && w.c !== filter) return;
+      var card = document.createElement('article');
+      card.className = 'work-card reveal';
+      card.innerHTML =
+        '<div class="work-thumb">' +
+          '<div class="cover" style="background-image:url(' + makeCover(i + 3, w.c) + ');background-size:cover;background-position:center;width:100%;height:100%"></div>' +
+          '<span class="work-tag">' + w.cat + '</span>' +
+          '<span class="work-dur">' + w.d + '</span>' +
+        '</div>' +
+        '<div class="work-body">' +
+          '<h3>' + w.t + '</h3>' +
+          '<div class="work-info">' +
+            '<span class="work-author"><span class="ava" style="background-image:url(' + makeAvatar(i + 1) + ');background-size:cover"></span>' + w.a + '</span>' +
+            '<span class="work-views"><svg viewBox="0 0 24 24"><path d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg>' + w.v + '</span>' +
+          '</div>' +
+        '</div>';
+      card.addEventListener('click', function () {
+        showToast('即将播放：' + w.t);
+      });
+      workGrid.appendChild(card);
+      observeReveal(card, i * 60);
+    });
+  }
+  renderWorks('all');
+
+  /* ---------- filters ---------- */
+  var chips = document.querySelectorAll('.chip');
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      chips.forEach(function (c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      renderWorks(chip.getAttribute('data-filter'));
+    });
+  });
+
+  /* ---------- posts covers ---------- */
+  document.getElementById('post1').style.cssText =
+    'background-image:url(' + makeCover(2, 'exp') + ');background-size:cover;background-position:center;width:100%;height:100%';
+  document.getElementById('post2').style.cssText =
+    'background-image:url(' + makeCover(6, 'music') + ');background-size:cover;background-position:center;width:100%;height:100%';
+  document.getElementById('post3').style.cssText =
+    'background-image:url(' + makeCover(9, 'city') + ');background-size:cover;background-position:center;width:100%;height:100%';
+
+  /* ---------- creators ---------- */
+  var creators = [
+    { n: '阿 肆', r: '舞蹈影像导演', d: '擅长把身体语言放进城市空间，用镜头记录动作的节奏。', f: '8.2万' },
+    { n: '林一白', r: '视觉实验作者', d: '在像素、胶片与数字噪点之间寻找新的画面秩序。', f: '5.6万' },
+    { n: '陈小满', r: '独立音乐 & MV 制作', d: '把生活里的声音采样成旋律，为每首歌拍摄影像。', f: '6.9万' },
+    { n: '九一影像社', r: '联合创作团队', d: '由四位摄影师组成的团队，关注城市与人之间的故事。', f: '12.4万' }
+  ];
+  var creatorGrid = document.getElementById('creatorGrid');
+  creators.forEach(function (c, i) {
+    var el = document.createElement('div');
+    el.className = 'creator reveal';
+    el.innerHTML =
+      '<div class="creator-ava" style="background-image:url(' + makeAvatar(i + 5) + ');background-size:cover;background-position:center"></div>' +
+      '<h4>' + c.n + '</h4>' +
+      '<div class="role">' + c.r + '</div>' +
+      '<div class="desc">' + c.d + '</div>' +
+      '<div class="fans"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>' + c.f + ' 关注者</div>';
+    creatorGrid.appendChild(el);
+  });
+
+  /* ---------- FAQ ---------- */
+  var faqs = [
+    { q: '蜜臂MV 和九一MV91 是什么关系？', a: '蜜臂MV 是平台的品牌名称，九一MV91 是团队与社区的完整标识。两者指代同一个影像内容平台，九一MV91 也常被创作者用作社区署名与活动联合出品名。' },
+    { q: '如何上传自己的作品？', a: '注册账号并完成基础资料后，进入创作中心即可上传视频文件，填写标题、标签与简介。平台支持常见主流视频格式，建议使用横屏 1080P 及以上分辨率的源文件，以获得更好的播放效果。' },
+    { q: '新人作品能获得推荐吗？', a: '可以。蜜臂MV 对新人作品设有冷启动曝光机制，系统会依据内容标签向兴趣相符的观众进行首轮推荐。保持稳定的更新频率、使用准确的标签、完善封面与标题，都有助于提升初始曝光。' },
+    { q: '作品版权归谁所有？', a: '作品的著作权归创作者本人所有。上传即表示授权蜜臂MV 在平台范围内展示与分发该作品。平台不会将你的作品用于商业用途，除非另行取得明确授权。' },
+    { q: '社区对内容有什么要求？', a: '我们鼓励原创表达，反对搬运、抄袭与侵犯他人权益的内容。所有上传内容需遵守社区公约与相关法律法规。发现违规内容可以通过举报入口反馈，团队会及时处理。' },
+    { q: '是否支持联合创作与署名？', a: '支持。发布作品时可以添加多位联合创作者署名，导演、摄影、剪辑、编舞等角色均可分别标注。九一MV91 也定期发起联合创作征集，欢迎关注社区活动公告。' }
+  ];
+  var faqList = document.getElementById('faqList');
+  faqs.forEach(function (f, i) {
+    var item = document.createElement('div');
+    item.className = 'faq-item' + (i === 0 ? ' open' : '');
+    item.innerHTML = '<button class="faq-q">' + f.q + '<span class="ic"></span></button><div class="faq-a"><p>' + f.a + '</p></div>';
+    faqList.appendChild(item);
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    if (i === 0) a.style.maxHeight = a.scrollHeight + 'px';
+    q.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      faqList.querySelectorAll('.faq-item').forEach(function (it) {
+        it.classList.remove('open');
+        it.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ---------- subscribe ---------- */
+  window.subscribe = function (e) {
+    e.preventDefault();
+    var input = document.getElementById('emailInput');
+    var val = input.value.trim();
+    if (!val || val.indexOf('@') < 0) {
+      showToast('请输入有效的邮箱地址');
+      return;
+    }
+    showToast('申请已提交，我们将尽快与你联系');
+    input.value = '';
+  };
+
+  /* ---------- reveal observer ---------- */
+  var observer;
+  if ('IntersectionObserver' in window) {
+    observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          observer.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12 });
+  }
+  function observeReveal(el, delay) {
+    if (!el.classList.contains('reveal')) el.classList.add('reveal');
+    if (delay) el.style.transitionDelay = delay + 'ms';
+    if (observer) observer.observe(el);
+    else el.classList.add('in');
+  }
+  document.querySelectorAll('.reveal').forEach(function (el) { observeReveal(el, 0); });
+
+  /* ---------- counters ---------- */
+  var counted = false;
+  function animateCounts() {
+    if (counted) return;
+    var band = document.querySelector('.band');
+    if (!band) return;
+    var rect = band.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 80 && rect.bottom > 0) {
+      counted = true;
+      document.querySelectorAll('.band-num').forEach(function (el) {
+        var target = parseInt(el.getAttribute('data-count'), 10);
+        var start = 0;
+        var dur = 1400;
+        var t0 = performance.now();
+        function step(now) {
+          var p = Math.min((now - t0) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          var val = Math.round(start + (target - start) * eased);
+          el.textContent = val.toLocaleString('en-US');
+          if (p < 1) requestAnimationFrame(step);
+          else el.textContent = target.toLocaleString('en-US');
+        }
+        requestAnimationFrame(step);
+      });
+    }
+  }
+  window.addEventListener('scroll', animateCounts);
+  window.addEventListener('load', animateCounts);
+  animateCounts();
+
+  /* ---------- ticker duplicate ---------- */
+  var track = document.getElementById('tickerTrack');
+  if (track) {
+    track.innerHTML = track.innerHTML + track.innerHTML;
+  }
+})();
+</script>
+</body>
+</html>
